@@ -1,15 +1,12 @@
-import psycopg2
+from sqlalchemy import inspect
+from models import engine  # Переконайтесь, що engine правильно налаштований
 
-# Параметры подключения
-conn = psycopg2.connect(
-    dbname="postgres",
-    user="postgres",
-    password="mysecretpassword",
-    host="localhost",
-    port="5432",
-    options="-c client_encoding=UTF8" 
-)
+inspector = inspect(engine)
+tables = inspector.get_table_names()
 
-# Проверяем подключение
-print("Подключение успешно!")
-conn.close()
+if tables:
+    print("Список таблиць:")
+    for table in tables:
+        print(table)
+else:
+    print("Таблиці не знайдено.")

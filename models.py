@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship, sessionmaker
 Base = declarative_base()
 
 # Підключення до бази даних
-DATABASE_URL = "postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+DATABASE_URL = "postgresql://postgres:password@localhost:5432/postgres"
 engine = create_engine(DATABASE_URL)
 
 # Сесія
